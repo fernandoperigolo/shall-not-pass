@@ -1,0 +1,104 @@
+<!doctype html public="♥">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="assets/css/normalize.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Shall Not Pass - Form Validation</title>
+</head>
+<body>
+  <h1>Shall Not Pass - Form Validation</h1>
+  <form method="post" action="">
+    <!-- Custom validation implemented when plugin are started -->
+    <div>
+      <label for="run-your">Run your?</label>
+      <input type="text" name="run-your" id="run-your" class="snp-foo" />
+    </div>
+
+    <!-- Not Null validation -->
+    <div>
+      <label for="text">Text:</label>
+      <input type="text" name="text" id="text" class="snp-notnull" />
+    </div>
+
+    <!-- Not Null Textarea validation -->
+    <div>
+      <label for="textarea">Textarea:</label>
+      <textarea name="textarea" id="textarea" class="snp-notnull"></textarea>
+    </div>
+
+    <!-- Not Null Radio validation -->
+    <div>
+      <p class="label">Select a option:</p>
+      <input type="radio" name="radio" id="radio-1" class="snp-notnull" /><label for="radio-1" class="snp-no-highlight">Radio 1</label>
+      <input type="radio" name="radio" id="radio-2" class="snp-notnull" /><label for="radio-2" class="snp-no-highlight">Radio 2</label>
+      <input type="radio" name="radio" id="radio-3" class="snp-notnull" /><label for="radio-3" class="snp-no-highlight">Radio 3</label>
+    </div>
+
+    <!-- Not Null checkbox validation -->
+    <div>
+      <input type="checkbox" name="checkbox" id="checkbox" class="snp-notnull" /><label for="checkbox">I accept this.</label>
+    </div>
+
+    <!-- Not Null select validation -->
+    <div>
+      <label for="select">Select:</label>
+      <select name="select" id="select" class="snp-notnull">
+        <option value="">Select a option...</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+      </select>
+    </div>
+
+    <!-- Email validation -->
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" class="snp-email" />
+    </div>
+
+    <!-- Password validation -->
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" class="snp-password retype-password-same" />
+    </div>
+
+    <!-- Equal validation -->
+    <div>
+      <label for="retype-password">Retype Password:</label>
+      <input type="password" name="retype-password" id="retype-password" class="snp-password snp-equalto" />
+    </div>
+
+    <!-- Date validation -->
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" name="date" id="date" class="snp-date" /><small>(dd/mm/aaaa)</small>
+    </div>
+
+    <div>
+      <input type="submit" value="Pass" />
+    </div>
+  </form>
+
+  <script src="assets/js/jquery-2.0.3.min.js"></script>
+  <script src="assets/js/jquery-shall-not-pass.js"></script>
+  <script>
+    $('form').shallNotPass({
+      validations: {
+        'snp-foo': function(field){
+          if(field.val() !== 'foos'){
+            return {
+                pass: false,
+                errorMsg: 'This value must be "foos".'
+              };
+          };
+          return true;
+        }
+      },
+      onValidationsPass: function(){
+        console.info('onValidationsPass triggered');
+      }
+    });
+  </script>
+</body>
+</html>

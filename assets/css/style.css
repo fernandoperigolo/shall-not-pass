@@ -1,0 +1,35 @@
+form div{
+  clear: both;
+  margin: 0 0 20px;
+}
+form label,
+form .label{
+  display: block;
+  cursor: pointer;
+}
+form input[type="checkbox"],
+form input[type="radio"]{
+  float: left;
+  margin-right: 5px;
+}
+
+.snp-form-error{
+  background: #c0392b;
+  color: #fff;
+  padding: 10px
+}
+
+.snp-error label:not(.snp-no-highlight),
+.snp-error .label{
+  color: #c0392b;
+}
+
+.snp-error input,
+.snp-error textarea{
+  border: 1px solid #c0392b;
+}
+
+.snp-input-error-msg{
+  font-size: 70%;
+  color: #c0392b;
+}
